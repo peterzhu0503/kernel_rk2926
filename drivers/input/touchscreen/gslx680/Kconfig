@@ -1,0 +1,55 @@
+#
+# Touchscreen driver configuration
+#
+
+menu "gslX680 touchscreen panel support"
+config TOUCHSCREEN_GSLX680
+	tristate "gslX680 touchscreen panel support"
+	depends on I2C2_RK29 || I2C2_RK30
+
+comment "Touchscreen hardware drivers"
+	depends on TOUCHSCREEN_GSLX680
+	
+choice
+    depends on TOUCHSCREEN_GSLX680
+	prompt  "Touch Screen Select"
+
+	config TOUCHSCREEN_GSL1680_7INCH_800x480_LEHENG
+  	bool "7 inch 800x480(Le Heng)"
+	
+	config TOUCHSCREEN_GSL1680_7INCH_800x480_SHENGHEXIANG
+  	bool "7 inch 800x480(Sheng He Xiang)"
+	
+	config TOUCHSCREEN_GSL1680_7INCH_800x480_YOUCHU
+  	bool "7 inch 800x480(You Chu)"
+	
+	config TOUCHSCREEN_GSL1680_7INCH_800x480_YOUCHU_YISENG
+  	bool "7 inch 800x480(You Chu)(customer: Yi Seng)"
+	
+	config TOUCHSCREEN_GSL1680_7INCH_1024x600_YOUCHU
+  	bool "7 inch 1024x600(You Chu)"
+
+	config TOUCHSCREEN_GSL1680_7INCH_1024x600_SHENGHEXIANG
+  	bool "7 inch 1024x600(Sheng He Xiang)"
+
+	config GSLX680_9INCH_800X480
+  	bool "9 inch 800x480"
+	
+	config GSLX680_9INCH_800X480_TENGYAO
+  	bool "9 inch 800x480 (TengYao)"
+	
+	config GSLX680_9INCH_1024X600
+  	bool "9 inch 1024x600"
+	
+	config GSLX680_8INCH_800X600
+  	bool "8 inch 800x600"
+
+	config GSLX680_8INCH_1024X600
+  	bool "8 inch 1024x600"
+
+	config GSLX680_8INCH_1024X768
+  	bool "8 inch 1024x768"	
+endchoice	
+
+endmenu
+

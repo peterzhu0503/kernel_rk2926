@@ -1,0 +1,76 @@
+if ARCH_RK30
+
+config ARCH_RK3066B
+	bool "Rockchip RK3066B"
+	help
+	  Support for Rockchip's RK3066B SoCs.
+
+config ARCH_RK30XX
+	bool
+	default y
+	depends on !ARCH_RK3066B
+
+if ARCH_RK30XX
+
+choice
+	prompt "RK30xx Board Type"
+	default MACH_RK30_SDK
+
+config MACH_RK30_SDK
+	bool "RK30 SDK board"
+
+config MACH_RK3066_SDK
+	bool "RK3066 SDK board"
+
+config MACH_RK30_DS1001B
+        bool "RK30 DS1001B board"
+     
+config MACH_RK30_PHONE
+	bool "RK30 smart phone board"
+
+config MACH_RK30_PHONE_LOQUAT
+	bool "RK30 smart phone loquat board"
+
+config MACH_RK30_PHONE_A22
+        bool "RK30 smart phone a22 board"
+	
+config MACH_RK30_PHONE_PAD
+        bool "RK30 phone pad board"
+	
+endchoice
+
+if MACH_RK30_PHONE_PAD
+choice
+	prompt "RK30 phone pad board type"
+	default MACH_RK30_PHONE_PAD_DS763
+
+	config MACH_RK30_PHONE_PAD_DS763
+	bool "ds763"
+
+	config MACH_RK30_PHONE_PAD_C8003
+	bool "c8003"
+
+endchoice
+endif
+
+endif
+
+if ARCH_RK3066B
+
+choice
+	prompt "RK3066B Board Type"
+
+config MACH_RK3066B_FPGA
+	bool "RK3066B FPGA board"
+	select RK_FPGA
+
+config MACH_RK3066B_SDK
+	bool "RK3066B SDK board"
+config MACH_RK3066B_M701
+	bool "RK3066B M701 board"
+
+endchoice
+
+endif
+
+endif
